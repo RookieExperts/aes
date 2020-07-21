@@ -46,12 +46,13 @@ function encryptAES(str) {
 	var key = CryptoJS.enc.Latin1.parse('abcdef0123456789');
     var iv = CryptoJS.enc.Latin1.parse('0123456789abcdef');
   //加密
-    var encrypted = CryptoJS.AES.encrypt(data, key, {
+    var encrypted = CryptoJS.AES.encrypt(str, key, {
         iv: iv,
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.ZeroPadding
     });
     console.log(encrypted.toString())
+    return encrypted.toString();
 }
 //js aes解密
 function decryptAES(str) {
