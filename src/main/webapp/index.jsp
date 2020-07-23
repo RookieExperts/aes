@@ -12,8 +12,8 @@
 <body>
 <h2>登录!</h2>
 <form method="post">
-账号：<input type="text" placeholder="请输入账号" value="" id="account" name="account" /><br />
-密码：<input type="password" placeholder="请输入密码" value="" id="password" name="password"  /><br />
+账号：<input type="text" placeholder="请输入账号" value="555116024" id="account" name="account" /><br />
+密码：<input type="password" placeholder="请输入密码" value="join@123" id="password" name="password"  /><br />
 <button type="button" id="loginButton">登录</button>
 <button type="reset">重置</button>
 </form>
@@ -23,6 +23,14 @@ $(document).ready(function() {
 	document.getElementById('loginButton').onclick = function() {
 		var account = $('#account').val();
 		var password = $('#password').val();
+		if(account == '') {
+			alert("用户账号不能为空");
+			return;
+		}
+		if(password == ''){
+			alert("密码不能为空");
+			return;
+		}
 		//加密
 		account = encryptAES(account);
 		password = encryptAES(password);
@@ -34,6 +42,8 @@ $(document).ready(function() {
 			success: function(res) {
 				if(res.statu == '0') {
 					alert("登录成功！");
+				}else {
+					alert(res.msg);
 				}
 				
 			}
@@ -52,6 +62,9 @@ function encryptAES(str) {
         padding: CryptoJS.pad.ZeroPadding
     });
     console.log(encrypted.toString())
+    
+    //encrypted = encrypted.toString().replace(/\+/g,"%2B");
+    
     return encrypted.toString();
 }
 //js aes解密

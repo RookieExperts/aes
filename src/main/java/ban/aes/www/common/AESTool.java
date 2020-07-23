@@ -12,11 +12,6 @@ public class AESTool {
 	static String key = "abcdef0123456789"; // 16位
 	static String iv = "0123456789abcdef"; // 16位
 
-	public static void main(String args[]) throws Exception {
-		System.out.println(encryptAES("123456"));
-		System.out.println(decryptAES(encryptAES("123456")));
-	}
-
 	public static String encryptAES(String data) throws Exception {
 
 		try {
